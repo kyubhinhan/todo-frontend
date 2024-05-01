@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { ListItem, ListItemText, TextField, ListItemSecondaryAction, Checkbox, styled } from '@material-ui/core';
-import { EditIcon, DeleteIcon, SaveIcon, CancelIcon } from '@material-ui/icons';
+import { ListItem, ListItemText, TextField, ListItemSecondaryAction, Checkbox, styled, IconButton } from '@material-ui/core';
+import { Edit, Delete, Save, Cancel } from '@material-ui/icons';
 
 function TodoItem({ task, onEditText, onEditCompleted, onDelete }) {
     const [isEditing, setIsEditing] = useState(false);
     const [editedTask, setEditedTask] = useState(task.text);
 
     const handleSave = () => {
-        onEditText(task.id, editedTask)
+        onEditText(task._id, editedTask)
         setIsEditing(false);
     };
 
@@ -25,7 +25,7 @@ function TodoItem({ task, onEditText, onEditCompleted, onDelete }) {
         <ListItem>
             <Checkbox
                 checked={task.completed}
-                onChange={() => onEditCompleted(task.id)}
+                onChange={() => onEditCompleted(task._id)}
             />
 
             {isEditing ? (
@@ -43,17 +43,17 @@ function TodoItem({ task, onEditText, onEditCompleted, onDelete }) {
                 {
                     isEditing ? (<>
                         <IconButton edge="end" aria-label="save" onClick={handleSave}>
-                            <SaveIcon />
+                            <Save />
                         </IconButton>
                         <IconButton edge="end" aria-label="cancel" onClick={handleCancel}>
-                            <CancelIcon />
+                            <Cancel />
                         </IconButton>
                     </>) : <>
                         <IconButton edge="end" aria-label="edit" onClick={() => setIsEditing(true)}>
-                            <EditIcon />
+                            <Edit />
                         </IconButton>
-                        <IconButton edge="end" aria-label="delete" onClick={() => onDelete(task.id)}>
-                            <DeleteIcon />
+                        <IconButton edge="end" aria-label="delete" onClick={() => onDelete(task._id)}>
+                            <Delete />
                         </IconButton>
                     </>
                 }
