@@ -44,7 +44,7 @@ function App() {
   };
 
   const onKeyDown = lodash.debounce((e) => {
-    if (e.key == "Enter") {
+    if (e.key === "Enter") {
       addTask()
     }
   }, 150)
