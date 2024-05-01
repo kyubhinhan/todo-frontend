@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Container, TextField, Button, List } from '@material-ui/core';
 import TodoItem from './TodoItem';
-import lodash from "lodash";
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -54,7 +53,7 @@ function App() {
         onChange={(e) => setNewTask(e.target.value)}
         onKeyDown={(e) => {
           if (e.key === 'Enter') {
-            lodash.debounce(addTask, 200)()
+            setTimeout(addTask, 150)
           }
         }}
       />
