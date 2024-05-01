@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Container, TextField, Button, List } from '@material-ui/core';
 import TodoItem from './TodoItem';
+import lodash from "lodash";
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -42,6 +43,12 @@ function App() {
     fetchTasks();
   };
 
+  const onKeyDown = lodash.debounce((e) => {
+    if (e.key == "Enter") {
+      addTask()
+    }
+  }, 150)
+
   return (
     <Container maxWidth="sm">
       <h1>To-Do List</h1>
@@ -51,11 +58,7 @@ function App() {
         fullWidth
         value={newTask}
         onChange={(e) => setNewTask(e.target.value)}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter') {
-            setTimeout(addTask, 150)
-          }
-        }}
+        onKeyDown={onKeyDown}
       />
       <Button variant="contained" color="primary" onClick={addTask} style={{ marginTop: 20 }}>
         할 일 추가
