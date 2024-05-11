@@ -8,7 +8,7 @@ function App() {
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState('');
 
-  const url = 'http://127.0.0.1:3001/todos';
+  const url = 'http://192.168.49.2:3001/todos';
 
   useEffect(() => {
     fetchTasks();
