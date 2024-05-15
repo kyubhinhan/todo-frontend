@@ -1,5 +1,12 @@
-# Apache 서버가 포함된 기본 이미지 사용
-FROM httpd:2.4
+# Apache 이미지 사용
+FROM httpd:latest
 
-# 호스트의 build 폴더에서 이미지의 문서 루트로 모든 파일 복사
+# 필요한 모듈 활성화
+RUN apt-get update && apt-get install -y \
+    && a2enmod headers
+
+# 커스텀 Apache 설정 파일 복사
+COPY ./my-httpd.conf /usr/local/apache2/conf/httpd.conf
+
+# 웹 콘텐츠 복사
 COPY ./build/ /usr/local/apache2/htdocs/
