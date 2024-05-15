@@ -5,7 +5,7 @@ FROM httpd:latest
 RUN mkdir -p /var/log/apache2 && chown -R www-data:www-data /var/log/apache2
 
 # httpd.conf 파일 복사 및 ServerName 설정
-COPY ./httpd.conf /usr/local/apache2/conf/httpd.conf
+COPY ./my-httpd.conf /usr/local/apache2/conf/httpd.conf
 
 # 웹 콘텐츠 복사
 COPY ./build/ /usr/local/apache2/htdocs/
