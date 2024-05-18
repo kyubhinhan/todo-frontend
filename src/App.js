@@ -8,7 +8,8 @@ function App() {
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState('');
 
-  const url = 'http://myapp.todo:3001/todos';
+  const url = 'http://myapp.todo:80/todos';
+
 
   useEffect(() => {
     fetchTasks();
