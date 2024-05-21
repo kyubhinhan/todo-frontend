@@ -4,4 +4,4 @@ FROM httpd:latest
 COPY ./build/ /usr/local/apache2/htdocs/
 
 # 필요한 포트 열기
-EXPOSE 80
+EXPOSE 3000
