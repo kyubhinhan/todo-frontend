@@ -12,7 +12,7 @@ function App() {
 
 
   useEffect(() => {
-    // fetchTasks();
+    fetchTasks();
   }, []);
 
   const fetchTasks = async () => {
