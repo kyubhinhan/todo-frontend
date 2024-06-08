@@ -12,7 +12,7 @@ function App() {
 
 
   useEffect(() => {
-    fetchTasks();
+    // fetchTasks();
   }, []);
 
   const fetchTasks = async () => {
@@ -50,8 +50,12 @@ function App() {
     }
   }, 150)
 
+  const containerStyle = {
+    backgroundColor: "rgb(255, 255, 128)"
+  }
+
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="sm" style={containerStyle}>
       <h1>To-Do List</h1>
       <TextField
         label="할 일을 추가하세요"
